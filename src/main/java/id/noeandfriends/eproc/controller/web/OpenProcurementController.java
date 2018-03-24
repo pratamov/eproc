@@ -11,4 +11,8 @@ public class OpenProcurementController {
 	public String index(Model model) {
 		return "procurement";
 	}
+	@RequestMapping("/detil")
+	public String detil_procurement_page(Model model) {
+		return "procurement/detil-procurement";
+	}
 }
