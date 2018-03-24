@@ -145,7 +145,7 @@ public class InternalAPIController extends ExternalAPIController{
 			request.setAmount(accountRequest.getAmount());
 			request.setNomor_cif(nomor_cif);
 			ApiResponse<AccountCreationResponsePayload> response = accountCreation(request);
-			nomor_rekening = response.getPayload().getNo_rekening();
+			nomor_rekening = response.getPayload().getNomor_rekening();
 		}
 		{
 			user.setNomorRekening(nomor_rekening);
