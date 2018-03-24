@@ -2,14 +2,14 @@ package id.noeandfriends.eproc.model.external;
 
 public class UserRegisterRequest {
 	
-	private int nik;
+	private String nik;
 	private String nama;
 	private String tgl_lahir;
 	private String nama_ibu_kandung;
-	public int getNik() {
+	public String getNik() {
 		return nik;
 	}
-	public void setNik(int nik) {
+	public void setNik(String nik) {
 		this.nik = nik;
 	}
 	public String getNama() {

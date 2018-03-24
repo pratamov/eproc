@@ -122,6 +122,10 @@ public class InternalAPIController extends ExternalAPIController{
 		String nomor_rekening = "";
 		{
 			UserRegisterRequest request = new UserRegisterRequest();
+			request.setNama(accountRequest.getNama());
+			request.setNama_ibu_kandung(accountRequest.getNamaIbuKandung());
+			request.setNik(accountRequest.getNik());
+			request.setTgl_lahir(accountRequest.getTglLahir());
 			ApiResponse<UserRegisterResponsePayload> response = userRegister(request);
 			nomor_cif = response.getPayload().getCif_number();
 		}
