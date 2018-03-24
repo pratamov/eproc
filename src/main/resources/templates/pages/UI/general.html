@@ -291,43 +291,38 @@
               <div class="active tab-pane" id="create_account">
                 <form class="form-horizontal" th:action="@{'setting/create_account'}" method="post">
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">NIK</label>
-
+                    <label for="ca_nik" class="col-sm-2 control-label">NIK</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputName" placeholder="Name">
+                      <input type="text" class="form-control" id="ca_nik" name="ca_nik" placeholder="NIK">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Name</label>
-
+                    <label for="ca_name" class="col-sm-2 control-label">Name</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputName" placeholder="Name">
+                      <input type="text" class="form-control" id="ca_name" name="ca_name" placeholder="Name">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Tanggal Lahir</label>
-
+                    <label for="ca_tanggal_lahir" class="col-sm-2 control-label">Tanggal Lahir</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control pull-right" id="datepicker", placeholder="MM/DD/YYYY">
+                      <input type="text" class="form-control pull-right" id="datepicker" name="ca_tanggal_lahir", placeholder="MM/DD/YYYY">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Nama Ibu Kandung</label>
-
+                    <label for="ca_ibu" class="col-sm-2 control-label">Nama Ibu Kandung</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputName" placeholder="Nama ibu kandung">
+                      <input type="text" class="form-control" id="ca_ibu" name="ca_ibu" placeholder="Nama ibu kandung">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputEmail" class="col-sm-2 control-label">Amount</label>
-
+                    <label for="ca_amount" class="col-sm-2 control-label">Amount</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail" placeholder="100000000">
+                      <input type="text" class="form-control" id="ca_amount" name="ca_amount" placeholder="100000000">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" name="ca_submit" class="btn btn-primary">Submit</button>
                     </div>
                   </div>
                 </form>
@@ -336,15 +331,14 @@
               <div class="tab-pane" id="existing_account">
                 <form class="form-horizontal" th:action="@{'setting/existing_account'}" method="post">
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">No Rekening</label>
-
+                    <label for="ea_no_rek" class="col-sm-2 control-label">No Rekening</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputName" placeholder="Name">
+                      <input type="text" class="form-control" id="ea_no_rek" name="ea_no_rek" placeholder="No Rek">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" name="ea_submit" class="btn btn-primary">Submit</button>
                     </div>
                   </div>
                 </form>
@@ -354,15 +348,14 @@
               <div class="tab-pane" id="virtual_account">
                 <form class="form-horizontal" th:action="@{'setting/virtual_account'}" method="post">
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Kode Institusi</label>
-
+                    <label for="va_institusi" class="col-sm-2 control-label">Kode Institusi</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputName" placeholder="Name">
+                      <input type="text" class="form-control" id="va_institusi" name="va_institusi" placeholder="Kode Institusi">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" name="va_submit" class="btn btn-primary">Submit</button>
                     </div>
                   </div>
                 </form>
@@ -371,22 +364,20 @@
               <div class="tab-pane" id="transfer">
                 <form class="form-horizontal" th:action="@{'setting/transfer'}" method="post">
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">No Rekening Tujuan</label>
-
+                    <label for="tf_no_rek_tujuan" class="col-sm-2 control-label">No Rekening Tujuan</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputName" placeholder="Name">
+                      <input type="text" class="form-control" id="tf_no_rek_tujuan" placeholder="No Rek Tujuan">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputEmail" class="col-sm-2 control-label">Amount</label>
-
+                    <label for="tf_amount" class="col-sm-2 control-label">Amount</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                      <input type="text" class="form-control" id="tf_amount" name="tf_amount" placeholder="Amount">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" name="tf_submit" class="btn btn-primary">Submit</button>
                     </div>
                   </div>
                 </form>
