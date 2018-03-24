@@ -16,7 +16,7 @@ import id.noeandfriends.eproc.repository.ProposalRepository;
 import id.noeandfriends.eproc.repository.UserRepository;
 
 @Controller
-@RequestMapping("/{user_id}/dashboard")
+@RequestMapping("/dashboard")
 public class DashboardController {
 	
 	@Autowired
@@ -29,11 +29,7 @@ public class DashboardController {
 	UserRepository userRepository;
 	
 	@RequestMapping("")
-	public String index(Model model, @PathVariable String user_id) throws JsonProcessingException {
-		ObjectMapper mapper = new ObjectMapper();
-		User user = userRepository.findById(user_id).get();
-		model.addAttribute("user", user);
-		model.addAttribute("user_json", mapper.writeValueAsString(user));
+	public String index(Model model) {
 		return "index";
 	}
 	

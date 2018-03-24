@@ -35,6 +35,7 @@ public class LoginController extends AbstractContractorController{
 		login.setPassword(password);
 		
 		User user = login(login).getBody();
-		response.sendRedirect("/" + user.getId() + "/dashboard");
+		
+		response.sendRedirect("/dashboard");
 	}
 }
