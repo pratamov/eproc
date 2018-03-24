@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import id.noeandfriends.eproc.controller.AbstractContractorController;
 import id.noeandfriends.eproc.controller.rest.ContractorRestController;
 import id.noeandfriends.eproc.repository.ProcurementRepository;
 import id.noeandfriends.eproc.repository.ProposalRepository;
@@ -12,7 +13,7 @@ import id.noeandfriends.eproc.repository.UserRepository;
 
 @Controller
 @RequestMapping("/dashboard")
-public class DashboardController extends ContractorRestController{
+public class DashboardController extends AbstractContractorController{
 	
 	@Autowired
 	ProcurementRepository procurementRepository;

@@ -10,11 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import id.noeandfriends.eproc.controller.AbstractContractorController;
 import id.noeandfriends.eproc.controller.rest.ContractorRestController;
 
 @Controller
 @RequestMapping("/setting")
-public class SettingController extends ContractorRestController{
+public class SettingController extends AbstractContractorController {
 
 	@RequestMapping("")
 	public String index(Model model) {

@@ -4,11 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import id.noeandfriends.eproc.controller.AbstractContractorController;
 import id.noeandfriends.eproc.controller.rest.ContractorRestController;
 
 @Controller
 @RequestMapping("/proposal")
-public class ProposalController extends ContractorRestController{
+public class ProposalController extends AbstractContractorController {
 	
 	@RequestMapping("")
 	public String index(Model model) {
@@ -22,5 +23,4 @@ public class ProposalController extends ContractorRestController{
 	public String form_edit_proposal(Model model) {
 		return "pages/tables/edit_proposal";
 	}
-	
 }
