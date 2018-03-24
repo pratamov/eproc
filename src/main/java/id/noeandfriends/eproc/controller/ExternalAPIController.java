@@ -15,7 +15,6 @@ import id.noeandfriends.eproc.model.external.AccountCreationRequest;
 import id.noeandfriends.eproc.model.external.AccountCreationResponsePayload;
 import id.noeandfriends.eproc.model.external.AccountStatementRequest;
 import id.noeandfriends.eproc.model.external.AccountStatementResponsePayload;
-import id.noeandfriends.eproc.model.external.ApiErrorResponsePayload;
 import id.noeandfriends.eproc.model.external.ApiResponse;
 import id.noeandfriends.eproc.model.external.AtmLocationRequest;
 import id.noeandfriends.eproc.model.external.AtmLocationResponsePayload;
@@ -66,6 +65,7 @@ public class ExternalAPIController {
 			
 			response.setStatus(error);
 			response.setStatusCode(500);
+			System.out.println(error);
 		}
 		
 		return response;
@@ -100,6 +100,7 @@ public class ExternalAPIController {
 			
 			response.setStatus(error);
 			response.setStatusCode(500);
+			System.out.println(error);
 		}
 		return response;
 		
@@ -132,6 +133,7 @@ public class ExternalAPIController {
 			
 			response.setStatus(error);
 			response.setStatusCode(500);
+			System.out.println(error);
 		}
 		return response;
 	}
@@ -163,6 +165,7 @@ public class ExternalAPIController {
 			
 			response.setStatus(error);
 			response.setStatusCode(500);
+			System.out.println(error);
 		}
 		return response;
 		
@@ -195,6 +198,7 @@ public class ExternalAPIController {
 			
 			response.setStatus(error);
 			response.setStatusCode(500);
+			System.out.println(error);
 		}
 		
 		return response;
@@ -228,6 +232,7 @@ public class ExternalAPIController {
 			
 			response.setStatus(error);
 			response.setStatusCode(500);
+			System.out.println(error);
 		}
 		
 		return response;
@@ -261,6 +266,7 @@ public class ExternalAPIController {
 			
 			response.setStatus(error);
 			response.setStatusCode(500);
+			System.out.println(error);
 		}
 		
 		return response;
