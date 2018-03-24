@@ -56,6 +56,8 @@ public class ExternalAPIController {
 				endpoint , HttpMethod.POST, httpEntity, 
 				new ParameterizedTypeReference<ApiResponse<UserRegisterResponsePayload>>() {}).getBody();
 			
+			System.out.println(mapper.writeValueAsString(response));
+			
 		}
 		catch (HttpServerErrorException exception) {
 			
@@ -92,6 +94,8 @@ public class ExternalAPIController {
 			response = restTemplate.exchange(
 				endpoint , HttpMethod.POST, httpEntity, 
 				new ParameterizedTypeReference<ApiResponse<AccountCreationResponsePayload>>() {}).getBody();
+			
+			System.out.println(mapper.writeValueAsString(response));
 		}
 		catch (HttpServerErrorException exception) {
 			String error = restTemplate.exchange(
@@ -125,6 +129,8 @@ public class ExternalAPIController {
 			response = restTemplate.exchange(
 				endpoint , HttpMethod.POST, httpEntity, 
 				new ParameterizedTypeReference<ApiResponse<BalanceInformationResponsePayload>>() {}).getBody();
+
+			System.out.println(mapper.writeValueAsString(response));
 		}
 		catch (HttpServerErrorException exception) {
 			String error = restTemplate.exchange(
@@ -157,6 +163,8 @@ public class ExternalAPIController {
 			response = restTemplate.exchange(
 				endpoint , HttpMethod.POST, httpEntity, 
 				new ParameterizedTypeReference<ApiResponse<InhouseTransferResponsePayload>>() {}).getBody();
+
+			System.out.println(mapper.writeValueAsString(response));
 		}
 		catch (HttpServerErrorException exception) {
 			String error = restTemplate.exchange(
@@ -190,6 +198,8 @@ public class ExternalAPIController {
 			response = restTemplate.exchange(
 				endpoint , HttpMethod.POST, httpEntity, 
 				new ParameterizedTypeReference<ApiResponse<AccountStatementResponsePayload>>() {}).getBody();
+
+			System.out.println(mapper.writeValueAsString(response));
 		}
 		catch (HttpServerErrorException exception) {
 			String error = restTemplate.exchange(
@@ -224,6 +234,8 @@ public class ExternalAPIController {
 			response = restTemplate.exchange(
 				endpoint , HttpMethod.POST, httpEntity, 
 				new ParameterizedTypeReference<ApiResponse<VaCreationResponsePayload>>() {}).getBody();
+
+			System.out.println(mapper.writeValueAsString(response));
 		}
 		catch (HttpServerErrorException exception) {
 			String error = restTemplate.exchange(
@@ -258,6 +270,8 @@ public class ExternalAPIController {
 			response = restTemplate.exchange(
 				endpoint , HttpMethod.POST, httpEntity, 
 				new ParameterizedTypeReference<ApiResponse<AtmLocationResponsePayload>>() {}).getBody();
+
+			System.out.println(mapper.writeValueAsString(response));
 		}
 		catch (HttpServerErrorException exception) {
 			String error = restTemplate.exchange(
