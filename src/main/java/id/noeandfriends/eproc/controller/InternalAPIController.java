@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
 import id.noeandfriends.eproc.model.Account;
 import id.noeandfriends.eproc.model.AccountRequest;
 import id.noeandfriends.eproc.model.Login;
@@ -94,7 +96,7 @@ public class InternalAPIController extends ExternalAPIController{
 	}
 	
 	@GetMapping(path="/v2/users/{user_id}/accounts")
-	public ResponseEntity<Account> getAccount(@PathVariable String user_id) {
+	public ResponseEntity<Account> getAccount(@PathVariable String user_id) throws JsonProcessingException {
 		HttpHeaders headers = new HttpHeaders();
 		User user = userRepository.findById(user_id).get();
 		Account account = new Account();
@@ -114,7 +116,7 @@ public class InternalAPIController extends ExternalAPIController{
 	}
 	
 	@PostMapping(path="/v2/users/{user_id}/accounts")
-	public ResponseEntity<Account> createAccount(@PathVariable String user_id, @RequestBody AccountRequest accountRequest) {
+	public ResponseEntity<Account> createAccount(@PathVariable String user_id, @RequestBody AccountRequest accountRequest) throws JsonProcessingException {
 		HttpHeaders headers = new HttpHeaders();
 		User user = userRepository.findById(user_id).get();
 		Account account = new Account();
@@ -153,7 +155,7 @@ public class InternalAPIController extends ExternalAPIController{
 	}
 	
 	@PostMapping(path="/v2/users/{user_id}/accounts/{nomor_rekening}")
-	public ResponseEntity<Account> connectAccount(@PathVariable String user_id, @PathVariable String nomor_rekening) {
+	public ResponseEntity<Account> connectAccount(@PathVariable String user_id, @PathVariable String nomor_rekening) throws JsonProcessingException {
 		
 		HttpHeaders headers = new HttpHeaders();
 		User user = userRepository.findById(user_id).get();
@@ -176,7 +178,7 @@ public class InternalAPIController extends ExternalAPIController{
 	}
 	
 	@GetMapping(path="/v2/atm")
-	public ResponseEntity<List<AtmLocation>> getAtmLocation(@RequestParam("latitude") double latitude, @RequestParam("longitude") double longitude, @RequestParam("radius_per_km") int radius_per_km) {
+	public ResponseEntity<List<AtmLocation>> getAtmLocation(@RequestParam("latitude") double latitude, @RequestParam("longitude") double longitude, @RequestParam("radius_per_km") int radius_per_km) throws JsonProcessingException {
 		HttpHeaders headers = new HttpHeaders();
 		AtmLocationRequest request = new AtmLocationRequest();
 		request.setLatitude(latitude);
