@@ -2,16 +2,16 @@ package id.noeandfriends.eproc.model;
 
 public class AccountRequest {
 	
-	private int nik;
+	private String nik;
 	private String nama;
 	private String tglLahir;
 	private String namaIbuKandung;
 	private double amount;
 	
-	public int getNik() {
+	public String getNik() {
 		return nik;
 	}
-	public void setNik(int nik) {
+	public void setNik(String nik) {
 		this.nik = nik;
 	}
 	public String getNama() {
