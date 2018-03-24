@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import id.noeandfriends.eproc.model.Account;
 import id.noeandfriends.eproc.model.AccountRequest;
@@ -171,8 +172,12 @@ public class InternalAPIController extends ExternalAPIController{
 	}
 	
 	@GetMapping(path="/v2/atm")
-	public ResponseEntity<List<AtmLocation>> getAtmLocation(@RequestBody AtmLocationRequest request) {
+	public ResponseEntity<List<AtmLocation>> getAtmLocation(@RequestParam("latitude") double latitude, @RequestParam("longitude") double longitude, @RequestParam("radius_per_km") int radius_per_km) {
 		HttpHeaders headers = new HttpHeaders();
+		AtmLocationRequest request = new AtmLocationRequest();
+		request.setLatitude(latitude);
+		request.setLongitude(longitude);
+		request.setRadius_per_km(radius_per_km);
 		List<AtmLocation> locations = this.atmLocation(request).getPayload().getData();
 		return new ResponseEntity<List<AtmLocation>>(locations, headers, HttpStatus.OK);
 	}
