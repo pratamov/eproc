@@ -23,7 +23,22 @@ public class SettingController {
 	}
 	
 	@PostMapping("/create_account")
-	public void index(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public void form_create_account(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		response.sendRedirect("/setting");
+	}
+	
+	@PostMapping("/exisiting_account")
+	public void form_existing_account(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		response.sendRedirect("/setting");
+	}
+	
+	@PostMapping("/virtual_account")
+	public void form_virtual_account(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		response.sendRedirect("/setting");
+	}
+	
+	@PostMapping("/transfer")
+	public void form_transfer(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.sendRedirect("/setting");
 	}
 }

@@ -334,7 +334,7 @@
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="existing_account">
-                <form class="form-horizontal">
+                <form class="form-horizontal" th:action="@{'setting/existing_account'}" method="post">
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">No Rekening</label>
 
@@ -352,7 +352,7 @@
               <!-- /.tab-pane -->
 
               <div class="tab-pane" id="virtual_account">
-                <form class="form-horizontal">
+                <form class="form-horizontal" th:action="@{'setting/virtual_account'}" method="post">
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Kode Institusi</label>
 
@@ -369,7 +369,7 @@
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="transfer">
-                <form class="form-horizontal">
+                <form class="form-horizontal" th:action="@{'setting/transfer'}" method="post">
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">No Rekening Tujuan</label>
 
