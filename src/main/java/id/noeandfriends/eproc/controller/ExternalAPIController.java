@@ -5,13 +5,14 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import id.noeandfriends.eproc.model.external.AccountCreationRequest;
 import id.noeandfriends.eproc.model.external.AccountCreationResponsePayload;
 import id.noeandfriends.eproc.model.external.AccountStatementRequest;
 import id.noeandfriends.eproc.model.external.AccountStatementResponsePayload;
+import id.noeandfriends.eproc.model.external.ApiErrorResponsePayload;
 import id.noeandfriends.eproc.model.external.ApiResponse;
 import id.noeandfriends.eproc.model.external.AtmLocationRequest;
 import id.noeandfriends.eproc.model.external.AtmLocationResponsePayload;
@@ -33,7 +34,6 @@ public class ExternalAPIController {
 	}
 	
 	public ApiResponse<UserRegisterResponsePayload> userRegister(UserRegisterRequest request){
-		System.out.println("userRegister");
 		
 		String endpoint = endpoint("user-register");
 		
@@ -45,25 +45,28 @@ public class ExternalAPIController {
 		
 		RestTemplate restTemplate = new RestTemplate();
 		
-
-		System.out.println("1");
+		ApiResponse<UserRegisterResponsePayload> response = new ApiResponse<>();
 		
-		ResponseEntity<ApiResponse<UserRegisterResponsePayload>> responseEntity = restTemplate.exchange(
+		try {
+			response = restTemplate.exchange(
 				endpoint , HttpMethod.POST, httpEntity, 
-				new ParameterizedTypeReference<ApiResponse<UserRegisterResponsePayload>>() {});
-
-
-		System.out.println("2");
-		
-		ApiResponse<UserRegisterResponsePayload> response = responseEntity.getBody();
-
-		System.out.println("3");
+				new ParameterizedTypeReference<ApiResponse<UserRegisterResponsePayload>>() {}).getBody();
+			
+		}
+		catch (HttpServerErrorException exception) {
+			ApiResponse<ApiErrorResponsePayload> error =
+					restTemplate.exchange(
+							endpoint , HttpMethod.POST, httpEntity, 
+							new ParameterizedTypeReference<ApiResponse<ApiErrorResponsePayload>>() {}).getBody();
+			
+			response.setStatus(error.getPayload().getErrors().get(0).getMessage());
+			response.setStatusCode(error.getStatusCode());
+		}
 		
 		return response;
 	}
 	
 	public ApiResponse<AccountCreationResponsePayload> accountCreation(AccountCreationRequest request){
-		System.out.println("accountCreation");
 		
 		String endpoint = endpoint("account-creation");
 		
@@ -74,17 +77,29 @@ public class ExternalAPIController {
 		HttpEntity<AccountCreationRequest> httpEntity = new HttpEntity<>(request, headers);
 		
 		RestTemplate restTemplate = new RestTemplate();
-		ApiResponse<AccountCreationResponsePayload> response = 
-				restTemplate.exchange(
-						endpoint , HttpMethod.POST, httpEntity, 
-						new ParameterizedTypeReference<ApiResponse<AccountCreationResponsePayload>>() {}).getBody();
 		
+		
+		ApiResponse<AccountCreationResponsePayload> response = new ApiResponse<>();
+		
+		try {
+			response = restTemplate.exchange(
+				endpoint , HttpMethod.POST, httpEntity, 
+				new ParameterizedTypeReference<ApiResponse<AccountCreationResponsePayload>>() {}).getBody();
+		}
+		catch (HttpServerErrorException exception) {
+			ApiResponse<ApiErrorResponsePayload> error =
+					restTemplate.exchange(
+							endpoint , HttpMethod.POST, httpEntity, 
+							new ParameterizedTypeReference<ApiResponse<ApiErrorResponsePayload>>() {}).getBody();
+			
+			response.setStatus(error.getPayload().getErrors().get(0).getMessage());
+			response.setStatusCode(error.getStatusCode());
+		}
 		return response;
 		
 	}
 	
 	public ApiResponse<BalanceInformationResponsePayload> balanceInformation(BalanceInformationRequest request){
-		System.out.println("balanceInformation");
 		
 		String endpoint = endpoint("balance-information");
 		
@@ -95,11 +110,22 @@ public class ExternalAPIController {
 		HttpEntity<BalanceInformationRequest> httpEntity = new HttpEntity<>(request, headers);
 		
 		RestTemplate restTemplate = new RestTemplate();
-		ApiResponse<BalanceInformationResponsePayload> response = 
-				restTemplate.exchange(
-						endpoint , HttpMethod.POST, httpEntity, 
-						new ParameterizedTypeReference<ApiResponse<BalanceInformationResponsePayload>>() {}).getBody();
+		ApiResponse<BalanceInformationResponsePayload> response = new ApiResponse<>();
 		
+		try {
+			response = restTemplate.exchange(
+				endpoint , HttpMethod.POST, httpEntity, 
+				new ParameterizedTypeReference<ApiResponse<BalanceInformationResponsePayload>>() {}).getBody();
+		}
+		catch (HttpServerErrorException exception) {
+			ApiResponse<ApiErrorResponsePayload> error =
+					restTemplate.exchange(
+							endpoint , HttpMethod.POST, httpEntity, 
+							new ParameterizedTypeReference<ApiResponse<ApiErrorResponsePayload>>() {}).getBody();
+			
+			response.setStatus(error.getPayload().getErrors().get(0).getMessage());
+			response.setStatusCode(error.getStatusCode());
+		}
 		return response;
 	}
 	
@@ -114,11 +140,22 @@ public class ExternalAPIController {
 		HttpEntity<InhouseTransferRequest> httpEntity = new HttpEntity<>(request, headers);
 		
 		RestTemplate restTemplate = new RestTemplate();
-		ApiResponse<InhouseTransferResponsePayload> response = 
-				restTemplate.exchange(
-						endpoint , HttpMethod.POST, httpEntity, 
-						new ParameterizedTypeReference<ApiResponse<InhouseTransferResponsePayload>>() {}).getBody();
+		ApiResponse<InhouseTransferResponsePayload> response = new ApiResponse<>();
 		
+		try {
+			response = restTemplate.exchange(
+				endpoint , HttpMethod.POST, httpEntity, 
+				new ParameterizedTypeReference<ApiResponse<InhouseTransferResponsePayload>>() {}).getBody();
+		}
+		catch (HttpServerErrorException exception) {
+			ApiResponse<ApiErrorResponsePayload> error =
+					restTemplate.exchange(
+							endpoint , HttpMethod.POST, httpEntity, 
+							new ParameterizedTypeReference<ApiResponse<ApiErrorResponsePayload>>() {}).getBody();
+			
+			response.setStatus(error.getPayload().getErrors().get(0).getMessage());
+			response.setStatusCode(error.getStatusCode());
+		}
 		return response;
 		
 	}
@@ -134,10 +171,22 @@ public class ExternalAPIController {
 		HttpEntity<AccountStatementRequest> httpEntity = new HttpEntity<>(request, headers);
 		
 		RestTemplate restTemplate = new RestTemplate();
-		ApiResponse<AccountStatementResponsePayload> response = 
-				restTemplate.exchange(
-						endpoint , HttpMethod.POST, httpEntity, 
-						new ParameterizedTypeReference<ApiResponse<AccountStatementResponsePayload>>() {}).getBody();
+		ApiResponse<AccountStatementResponsePayload> response = new ApiResponse<>();
+		
+		try {
+			response = restTemplate.exchange(
+				endpoint , HttpMethod.POST, httpEntity, 
+				new ParameterizedTypeReference<ApiResponse<AccountStatementResponsePayload>>() {}).getBody();
+		}
+		catch (HttpServerErrorException exception) {
+			ApiResponse<ApiErrorResponsePayload> error =
+					restTemplate.exchange(
+							endpoint , HttpMethod.POST, httpEntity, 
+							new ParameterizedTypeReference<ApiResponse<ApiErrorResponsePayload>>() {}).getBody();
+			
+			response.setStatus(error.getPayload().getErrors().get(0).getMessage());
+			response.setStatusCode(error.getStatusCode());
+		}
 		
 		return response;
 		
@@ -154,10 +203,22 @@ public class ExternalAPIController {
 		HttpEntity<VaCreationRequest> httpEntity = new HttpEntity<>(request, headers);
 		
 		RestTemplate restTemplate = new RestTemplate();
-		ApiResponse<VaCreationResponsePayload> response = 
-				restTemplate.exchange(
-						endpoint , HttpMethod.POST, httpEntity, 
-						new ParameterizedTypeReference<ApiResponse<VaCreationResponsePayload>>() {}).getBody();
+		ApiResponse<VaCreationResponsePayload> response = new ApiResponse<>();
+		
+		try {
+			response = restTemplate.exchange(
+				endpoint , HttpMethod.POST, httpEntity, 
+				new ParameterizedTypeReference<ApiResponse<VaCreationResponsePayload>>() {}).getBody();
+		}
+		catch (HttpServerErrorException exception) {
+			ApiResponse<ApiErrorResponsePayload> error =
+					restTemplate.exchange(
+							endpoint , HttpMethod.POST, httpEntity, 
+							new ParameterizedTypeReference<ApiResponse<ApiErrorResponsePayload>>() {}).getBody();
+			
+			response.setStatus(error.getPayload().getErrors().get(0).getMessage());
+			response.setStatusCode(error.getStatusCode());
+		}
 		
 		return response;
 		
@@ -174,10 +235,22 @@ public class ExternalAPIController {
 		HttpEntity<AtmLocationRequest> httpEntity = new HttpEntity<>(request, headers);
 		
 		RestTemplate restTemplate = new RestTemplate();
-		ApiResponse<AtmLocationResponsePayload> response = 
-				restTemplate.exchange(
-						endpoint , HttpMethod.POST, httpEntity, 
-						new ParameterizedTypeReference<ApiResponse<AtmLocationResponsePayload>>() {}).getBody();
+		ApiResponse<AtmLocationResponsePayload> response = new ApiResponse<>();
+		
+		try {
+			response = restTemplate.exchange(
+				endpoint , HttpMethod.POST, httpEntity, 
+				new ParameterizedTypeReference<ApiResponse<AtmLocationResponsePayload>>() {}).getBody();
+		}
+		catch (HttpServerErrorException exception) {
+			ApiResponse<ApiErrorResponsePayload> error =
+					restTemplate.exchange(
+							endpoint , HttpMethod.POST, httpEntity, 
+							new ParameterizedTypeReference<ApiResponse<ApiErrorResponsePayload>>() {}).getBody();
+			
+			response.setStatus(error.getPayload().getErrors().get(0).getMessage());
+			response.setStatusCode(error.getStatusCode());
+		}
 		
 		return response;
 		
