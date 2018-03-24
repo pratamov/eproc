@@ -4,9 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import id.noeandfriends.eproc.controller.rest.ContractorRestController;
+
 @Controller
 @RequestMapping("/open-procurement")
-public class OpenProcurementController {
+public class OpenProcurementController extends ContractorRestController{
+	
 	@RequestMapping("")
 	public String index(Model model) {
 		return "procurement";
@@ -15,4 +18,5 @@ public class OpenProcurementController {
 	public String detil_procurement_page(Model model) {
 		return "detil-procurement";
 	}
+	
 }
