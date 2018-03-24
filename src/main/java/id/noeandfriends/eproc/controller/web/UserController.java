@@ -22,6 +22,12 @@ public class UserController extends AbstractContractorController {
 	}
 	@PostMapping("/update")
 	public void form_update(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String username = request.getParameter("userUsername");
+		String email = request.getParameter("userEmail");
+		String phone = request.getParameter("userPhone");
+		String instansi = request.getParameter("userInstansi");
+		String npwp = request.getParameter("userNPWP");
+		String alamat = request.getParameter("userAlamat");
 		response.sendRedirect("/user");
 	}
 }
