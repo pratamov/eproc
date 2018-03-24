@@ -18,6 +18,7 @@ public class User {
 	private double rating;
 	private double balance;
 	private String nomorRekening;
+	private String kodeVirtualAccount;
 	
 	public String getId() {
 		return id;
@@ -90,6 +91,12 @@ public class User {
 	}
 	public void setNomorRekening(String nomorRekening) {
 		this.nomorRekening = nomorRekening;
+	}
+	public String getKodeVirtualAccount() {
+		return kodeVirtualAccount;
+	}
+	public void setKodeVirtualAccount(String kodeVirtualAccount) {
+		this.kodeVirtualAccount = kodeVirtualAccount;
 	}
 	
 }
