@@ -16,16 +16,23 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 import id.noeandfriends.eproc.model.Account;
 import id.noeandfriends.eproc.model.AccountRequest;
+import id.noeandfriends.eproc.model.TransferRequest;
+import id.noeandfriends.eproc.model.TransferResponse;
 import id.noeandfriends.eproc.model.Procurement;
 import id.noeandfriends.eproc.model.Proposal;
 import id.noeandfriends.eproc.model.User;
 import id.noeandfriends.eproc.model.external.AccountCreationRequest;
 import id.noeandfriends.eproc.model.external.AccountCreationResponsePayload;
+import id.noeandfriends.eproc.model.external.AccountStatementRequest;
+import id.noeandfriends.eproc.model.external.AccountStatementResponsePayload;
 import id.noeandfriends.eproc.model.external.ApiResponse;
 import id.noeandfriends.eproc.model.external.AtmLocation;
 import id.noeandfriends.eproc.model.external.AtmLocationRequest;
 import id.noeandfriends.eproc.model.external.BalanceInformationRequest;
 import id.noeandfriends.eproc.model.external.BalanceInformationResponsePayload;
+import id.noeandfriends.eproc.model.external.InhouseTransferRequest;
+import id.noeandfriends.eproc.model.external.InhouseTransferResponsePayload;
+import id.noeandfriends.eproc.model.external.Transaction;
 import id.noeandfriends.eproc.model.external.UserRegisterRequest;
 import id.noeandfriends.eproc.model.external.UserRegisterResponsePayload;
 import id.noeandfriends.eproc.repository.ProcurementRepository;
@@ -177,5 +184,37 @@ public abstract class InternalAPIController extends ExternalAPIController{
 		return new ResponseEntity<List<AtmLocation>>(locations, headers, HttpStatus.OK);
 	}
 	
+	@PostMapping(path="/v2/users/{user_id}/transfers")
+	public ResponseEntity<TransferResponse> inhouseTransfer(@PathVariable String user_id, @RequestBody TransferRequest transferRequest) throws JsonProcessingException{
+		HttpHeaders headers = new HttpHeaders();
+		User user = userRepository.findById(user_id).get();
+		
+		InhouseTransferRequest request = new InhouseTransferRequest();
+		request.setAmount(transferRequest.getAmount());
+		request.setRekening_asal(user.getNomorRekening());
+		request.setRekening_tujuan(transferRequest.getRekeningTujuan());
+		
+		InhouseTransferResponsePayload responsePayload = this.inhouseTransfer(request).getPayload();
+		
+		TransferResponse response = new TransferResponse();
+		response.setRefNumber(responsePayload.getRef_number());
+		response.setSuccess(responsePayload.isSuccess());
+		
+		return new ResponseEntity<TransferResponse>(response, headers, HttpStatus.OK);
+	}
+	
+	@GetMapping(path="/v2/users/{user_id}/transfers")
+	public ResponseEntity<List<Transaction>> getTransactionHistory(@PathVariable String user_id, @RequestParam("start_date") String start_date, @RequestParam("end_date") String end_date) throws JsonProcessingException{
+		HttpHeaders headers = new HttpHeaders();
+		User user = userRepository.findById(user_id).get();
+		
+		AccountStatementRequest request = new AccountStatementRequest();
+		request.setEnd_date(end_date);
+		request.setRekening(user.getNomorRekening());
+		request.setStart_date(start_date);
+		
+		List<Transaction> response = this.accountStatement(request).getPayload().getData_transaksi();
+		return new ResponseEntity<List<Transaction>>(response, headers, HttpStatus.OK);
+	}
 	
 }
