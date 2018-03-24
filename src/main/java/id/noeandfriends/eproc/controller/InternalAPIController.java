@@ -72,6 +72,15 @@ public class InternalAPIController extends ExternalAPIController{
 		return new ResponseEntity<User>(user, headers, HttpStatus.OK);
 	}
 	
+	@PostMapping(path="/v2/users/{user_id}/procurements")
+	public ResponseEntity<Procurement> createProcurements(@PathVariable String user_id, @RequestBody Procurement procurement) {
+		HttpHeaders headers = new HttpHeaders();
+		User user = userRepository.findById(user_id).get();
+		procurement.setUser(user);
+		procurement = procurementRepository.save(procurement);
+		return new ResponseEntity<Procurement>(procurement, headers, HttpStatus.OK);
+	}
+	
 	@GetMapping(path="/v2/users/{user_id}/procurements")
 	public ResponseEntity<List<Procurement>> getListOfMyProcurements(@PathVariable String user_id) {
 		HttpHeaders headers = new HttpHeaders();
