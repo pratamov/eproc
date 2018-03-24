@@ -11,4 +11,8 @@ public class ProposalController {
 	public String index(Model model) {
 		return "pages/tables/proposal";
 	}
+	@RequestMapping("/add")
+	public String form_create_proposal(Model model) {
+		return "pages/tables/add_proposal";
+	}
 }
