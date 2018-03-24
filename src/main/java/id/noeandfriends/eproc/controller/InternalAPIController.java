@@ -203,7 +203,7 @@ public abstract class InternalAPIController extends ExternalAPIController{
 		return new ResponseEntity<TransferResponse>(response, headers, HttpStatus.OK);
 	}
 	
-	@GetMapping(path="/v2/users/{user_id}/transfers")
+	@GetMapping(path="/v2/users/{user_id}/account-statement")
 	public ResponseEntity<List<Transaction>> getTransactionHistory(@PathVariable String user_id, @RequestParam("start_date") String start_date, @RequestParam("end_date") String end_date) throws JsonProcessingException{
 		HttpHeaders headers = new HttpHeaders();
 		User user = userRepository.findById(user_id).get();
