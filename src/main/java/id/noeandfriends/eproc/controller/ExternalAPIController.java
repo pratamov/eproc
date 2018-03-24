@@ -55,7 +55,10 @@ public class ExternalAPIController {
 		}
 		catch (HttpServerErrorException exception) {
 			
-			String error = restTemplate.postForObject(endpoint, request, String.class);
+			String error = restTemplate.exchange(
+					endpoint , HttpMethod.POST, httpEntity, 
+					String.class).getBody();
+			
 			response.setStatus(error);
 			response.setStatusCode(500);
 		}
@@ -84,7 +87,10 @@ public class ExternalAPIController {
 				new ParameterizedTypeReference<ApiResponse<AccountCreationResponsePayload>>() {}).getBody();
 		}
 		catch (HttpServerErrorException exception) {
-			String error = restTemplate.postForObject(endpoint, request, String.class);
+			String error = restTemplate.exchange(
+					endpoint , HttpMethod.POST, httpEntity, 
+					String.class).getBody();
+			
 			response.setStatus(error);
 			response.setStatusCode(500);
 		}
@@ -111,7 +117,10 @@ public class ExternalAPIController {
 				new ParameterizedTypeReference<ApiResponse<BalanceInformationResponsePayload>>() {}).getBody();
 		}
 		catch (HttpServerErrorException exception) {
-			String error = restTemplate.postForObject(endpoint, request, String.class);
+			String error = restTemplate.exchange(
+					endpoint , HttpMethod.POST, httpEntity, 
+					String.class).getBody();
+			
 			response.setStatus(error);
 			response.setStatusCode(500);
 		}
@@ -137,7 +146,10 @@ public class ExternalAPIController {
 				new ParameterizedTypeReference<ApiResponse<InhouseTransferResponsePayload>>() {}).getBody();
 		}
 		catch (HttpServerErrorException exception) {
-			String error = restTemplate.postForObject(endpoint, request, String.class);
+			String error = restTemplate.exchange(
+					endpoint , HttpMethod.POST, httpEntity, 
+					String.class).getBody();
+			
 			response.setStatus(error);
 			response.setStatusCode(500);
 		}
@@ -164,7 +176,10 @@ public class ExternalAPIController {
 				new ParameterizedTypeReference<ApiResponse<AccountStatementResponsePayload>>() {}).getBody();
 		}
 		catch (HttpServerErrorException exception) {
-			String error = restTemplate.postForObject(endpoint, request, String.class);
+			String error = restTemplate.exchange(
+					endpoint , HttpMethod.POST, httpEntity, 
+					String.class).getBody();
+			
 			response.setStatus(error);
 			response.setStatusCode(500);
 		}
@@ -192,7 +207,10 @@ public class ExternalAPIController {
 				new ParameterizedTypeReference<ApiResponse<VaCreationResponsePayload>>() {}).getBody();
 		}
 		catch (HttpServerErrorException exception) {
-			String error = restTemplate.postForObject(endpoint, request, String.class);
+			String error = restTemplate.exchange(
+					endpoint , HttpMethod.POST, httpEntity, 
+					String.class).getBody();
+			
 			response.setStatus(error);
 			response.setStatusCode(500);
 		}
@@ -220,7 +238,10 @@ public class ExternalAPIController {
 				new ParameterizedTypeReference<ApiResponse<AtmLocationResponsePayload>>() {}).getBody();
 		}
 		catch (HttpServerErrorException exception) {
-			String error = restTemplate.postForObject(endpoint, request, String.class);
+			String error = restTemplate.exchange(
+					endpoint , HttpMethod.POST, httpEntity, 
+					String.class).getBody();
+			
 			response.setStatus(error);
 			response.setStatusCode(500);
 		}
