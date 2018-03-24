@@ -5,6 +5,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import id.noeandfriends.eproc.model.external.AccountCreationRequest;
@@ -43,10 +44,20 @@ public class ExternalAPIController {
 		HttpEntity<UserRegisterRequest> httpEntity = new HttpEntity<>(request, headers);
 		
 		RestTemplate restTemplate = new RestTemplate();
-		ApiResponse<UserRegisterResponsePayload> response = 
-				restTemplate.exchange(
-						endpoint , HttpMethod.POST, httpEntity, 
-						new ParameterizedTypeReference<ApiResponse<UserRegisterResponsePayload>>() {}).getBody();
+		
+
+		System.out.println("1");
+		
+		ResponseEntity<ApiResponse<UserRegisterResponsePayload>> responseEntity = restTemplate.exchange(
+				endpoint , HttpMethod.POST, httpEntity, 
+				new ParameterizedTypeReference<ApiResponse<UserRegisterResponsePayload>>() {});
+
+
+		System.out.println("2");
+		
+		ApiResponse<UserRegisterResponsePayload> response = responseEntity.getBody();
+
+		System.out.println("3");
 		
 		return response;
 	}
