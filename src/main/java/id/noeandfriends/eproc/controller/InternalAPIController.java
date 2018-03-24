@@ -45,25 +45,6 @@ public class InternalAPIController extends ExternalAPIController{
 	@Autowired
 	UserRepository userRepository;
 	
-	@PostMapping(path="/v2/signup")
-	public ResponseEntity<User> signup(@RequestBody User user) {
-		HttpHeaders headers = new HttpHeaders();
-		user.setUserType(0);
-		user = userRepository.save(user);
-		return new ResponseEntity<User>(user, headers, HttpStatus.OK);
-	}
-	
-	@PostMapping(path="/v2/login")
-	public ResponseEntity<User> login(@ModelAttribute Login login) {
-		HttpHeaders headers = new HttpHeaders();
-		List<User> users = userRepository.findByEmailAndPasswordAndUserType(login.getEmail(), login.getPassword(), 0);
-		User user = new User();
-		if (users.size() > 0) {
-			user = users.get(0);
-		}
-		return new ResponseEntity<User>(user, headers, HttpStatus.OK);
-	}
-	
 	@GetMapping(path="/v2/users/{user_id}")
 	public ResponseEntity<User> getUserDetail(@PathVariable String user_id) {
 		HttpHeaders headers = new HttpHeaders();
@@ -102,6 +83,15 @@ public class InternalAPIController extends ExternalAPIController{
 		Procurement procurement = procurementRepository.findById(procurement_id).get();
 		List<Proposal> proposals = proposalRepository.findByProcurement(procurement);
 		return new ResponseEntity<List<Proposal>>(proposals, headers, HttpStatus.OK);
+	}
+	
+	@PostMapping(path="/v2/users/{user_id}/procurements/{procurement_id}/proposals")
+	public ResponseEntity<Proposal> createProposals(@PathVariable String user_id, @RequestBody Proposal proposal) {
+		HttpHeaders headers = new HttpHeaders();
+		User user = userRepository.findById(user_id).get();
+		proposal.setContractor(user);
+		proposal = proposalRepository.save(proposal);
+		return new ResponseEntity<Proposal>(proposal, headers, HttpStatus.OK);
 	}
 	
 	@GetMapping(path="/v2/users/{user_id}/accounts")
@@ -145,7 +135,7 @@ public class InternalAPIController extends ExternalAPIController{
 			request.setAmount(accountRequest.getAmount());
 			request.setNomor_cif(nomor_cif);
 			ApiResponse<AccountCreationResponsePayload> response = accountCreation(request);
-			nomor_rekening = response.getPayload().getNo_rekening();
+			nomor_rekening = response.getPayload().getNomor_rekening();
 		}
 		{
 			user.setNomorRekening(nomor_rekening);
