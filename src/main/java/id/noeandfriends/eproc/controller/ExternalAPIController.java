@@ -1,5 +1,6 @@
 package id.noeandfriends.eproc.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -29,7 +30,8 @@ import id.noeandfriends.eproc.model.external.VaCreationResponsePayload;
 
 public abstract class ExternalAPIController {
 	
-	public static final String APIKEY = "YB6d8eqSxLoqaG1pExGKUnjd9kzGbsC7";
+	@Value("${apikey}")
+	private String APIKEY;
 	
 	private String endpoint(String serviceName) {
 		return "http://mortgtech-eval-prod.apigee.net/btn-mortgtech/" + serviceName;
