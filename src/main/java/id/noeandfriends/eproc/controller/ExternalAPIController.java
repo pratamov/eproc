@@ -8,6 +8,9 @@ import org.springframework.http.MediaType;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import id.noeandfriends.eproc.model.external.AccountCreationRequest;
 import id.noeandfriends.eproc.model.external.AccountCreationResponsePayload;
 import id.noeandfriends.eproc.model.external.AccountStatementRequest;
@@ -33,7 +36,9 @@ public class ExternalAPIController {
 		return "http://mortgtech-eval-prod.apigee.net/btn-mortgtech/" + serviceName;
 	}
 	
-	public ApiResponse<UserRegisterResponsePayload> userRegister(UserRegisterRequest request){
+	public ApiResponse<UserRegisterResponsePayload> userRegister(UserRegisterRequest request) throws JsonProcessingException{
+		ObjectMapper mapper = new ObjectMapper();
+		System.out.println(mapper.writeValueAsString(request));
 		
 		String endpoint = endpoint("user-register");
 		
@@ -66,7 +71,9 @@ public class ExternalAPIController {
 		return response;
 	}
 	
-	public ApiResponse<AccountCreationResponsePayload> accountCreation(AccountCreationRequest request){
+	public ApiResponse<AccountCreationResponsePayload> accountCreation(AccountCreationRequest request) throws JsonProcessingException{
+		ObjectMapper mapper = new ObjectMapper();
+		System.out.println(mapper.writeValueAsString(request));
 		
 		String endpoint = endpoint("account-creation");
 		
@@ -98,7 +105,9 @@ public class ExternalAPIController {
 		
 	}
 	
-	public ApiResponse<BalanceInformationResponsePayload> balanceInformation(BalanceInformationRequest request){
+	public ApiResponse<BalanceInformationResponsePayload> balanceInformation(BalanceInformationRequest request) throws JsonProcessingException{
+		ObjectMapper mapper = new ObjectMapper();
+		System.out.println(mapper.writeValueAsString(request));
 		
 		String endpoint = endpoint("balance-information");
 		
@@ -127,7 +136,9 @@ public class ExternalAPIController {
 		return response;
 	}
 	
-	public ApiResponse<InhouseTransferResponsePayload> inhouseTransfer(InhouseTransferRequest request){
+	public ApiResponse<InhouseTransferResponsePayload> inhouseTransfer(InhouseTransferRequest request) throws JsonProcessingException{
+		ObjectMapper mapper = new ObjectMapper();
+		System.out.println(mapper.writeValueAsString(request));
 		
 		String endpoint = endpoint("inhouse-transfer");
 		
@@ -157,7 +168,9 @@ public class ExternalAPIController {
 		
 	}
 	
-	public ApiResponse<AccountStatementResponsePayload> accountStatement(AccountStatementRequest request){
+	public ApiResponse<AccountStatementResponsePayload> accountStatement(AccountStatementRequest request) throws JsonProcessingException{
+		ObjectMapper mapper = new ObjectMapper();
+		System.out.println(mapper.writeValueAsString(request));
 		
 		String endpoint = endpoint("account-statement");
 		
@@ -188,7 +201,9 @@ public class ExternalAPIController {
 		
 	}
 	
-	public ApiResponse<VaCreationResponsePayload> vaCreation(VaCreationRequest request){
+	public ApiResponse<VaCreationResponsePayload> vaCreation(VaCreationRequest request) throws JsonProcessingException{
+		ObjectMapper mapper = new ObjectMapper();
+		System.out.println(mapper.writeValueAsString(request));
 		
 		String endpoint = endpoint("account-statement");
 		
@@ -219,7 +234,9 @@ public class ExternalAPIController {
 		
 	}
 	
-	public ApiResponse<AtmLocationResponsePayload> atmLocation(AtmLocationRequest request){
+	public ApiResponse<AtmLocationResponsePayload> atmLocation(AtmLocationRequest request) throws JsonProcessingException{
+		ObjectMapper mapper = new ObjectMapper();
+		System.out.println(mapper.writeValueAsString(request));
 		
 		String endpoint = endpoint("atm-location");
 		
