@@ -32,6 +32,7 @@ public class ExternalAPIController {
 	}
 	
 	public ApiResponse<UserRegisterResponsePayload> userRegister(UserRegisterRequest request){
+		System.out.println("userRegister");
 		
 		String endpoint = endpoint("user-register");
 		
@@ -51,6 +52,7 @@ public class ExternalAPIController {
 	}
 	
 	public ApiResponse<AccountCreationResponsePayload> accountCreation(AccountCreationRequest request){
+		System.out.println("accountCreation");
 		
 		String endpoint = endpoint("account-creation");
 		
@@ -71,6 +73,7 @@ public class ExternalAPIController {
 	}
 	
 	public ApiResponse<BalanceInformationResponsePayload> balanceInformation(BalanceInformationRequest request){
+		System.out.println("balanceInformation");
 		
 		String endpoint = endpoint("balance-information");
 		
