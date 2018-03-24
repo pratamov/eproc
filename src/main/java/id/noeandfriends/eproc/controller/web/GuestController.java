@@ -9,10 +9,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import id.noeandfriends.eproc.controller.AbstractContractorController;
 import id.noeandfriends.eproc.controller.rest.ContractorRestController;
 
 @Controller
-public class GuestController extends ContractorRestController {
+public class GuestController extends AbstractContractorController {
 	
 	@GetMapping(path="/docs")
 	public void docs(HttpServletRequest request, HttpServletResponse response) throws IOException{

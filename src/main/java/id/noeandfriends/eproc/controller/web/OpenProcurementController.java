@@ -4,11 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import id.noeandfriends.eproc.controller.AbstractContractorController;
 import id.noeandfriends.eproc.controller.rest.ContractorRestController;
 
 @Controller
 @RequestMapping("/open-procurement")
-public class OpenProcurementController extends ContractorRestController{
+public class OpenProcurementController extends AbstractContractorController{
 	
 	@RequestMapping("")
 	public String index(Model model) {

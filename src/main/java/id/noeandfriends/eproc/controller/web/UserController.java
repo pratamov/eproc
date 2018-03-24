@@ -10,11 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import id.noeandfriends.eproc.controller.AbstractContractorController;
 import id.noeandfriends.eproc.controller.rest.ContractorRestController;
 
 @Controller
 @RequestMapping("/user")
-public class UserController extends ContractorRestController{
+public class UserController extends AbstractContractorController {
 	@RequestMapping("")
 	public String index(Model model) {
 		return "pages/examples/profile";

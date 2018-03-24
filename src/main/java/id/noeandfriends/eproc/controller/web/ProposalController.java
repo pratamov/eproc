@@ -10,11 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import id.noeandfriends.eproc.controller.AbstractContractorController;
 import id.noeandfriends.eproc.controller.rest.ContractorRestController;
 
 @Controller
 @RequestMapping("/proposal")
-public class ProposalController extends ContractorRestController{
+public class ProposalController extends AbstractContractorController {
 	
 	@RequestMapping("")
 	public String index(Model model) {
@@ -38,5 +39,4 @@ public class ProposalController extends ContractorRestController{
 		String File = request.getParameter("proposalFile"); 
 		return "pages/tables/edit_proposal";
 	}
-	
 }
