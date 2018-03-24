@@ -13,7 +13,7 @@ public class Procurement {
 	private String title;		// judul
 	private String description;	// deskripsi singkat
 	private String alamat;		// alamat
-	private User pic;			// orang yang buat 
+	private User user;			// orang yang buat 
 	private Date created;		// tanggal dibuat
 	private Date dueDate;		// tanggal deadline
 	private String layoutURL;	// url layout rumah
@@ -45,12 +45,6 @@ public class Procurement {
 	}
 	public void setAlamat(String alamat) {
 		this.alamat = alamat;
-	}
-	public User getPic() {
-		return pic;
-	}
-	public void setPic(User pic) {
-		this.pic = pic;
 	}
 	public Date getCreated() {
 		return created;
@@ -93,6 +87,12 @@ public class Procurement {
 	}
 	public void setAccepted(Procurement accepted) {
 		this.accepted = accepted;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 }

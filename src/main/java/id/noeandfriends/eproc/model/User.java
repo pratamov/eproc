@@ -14,8 +14,11 @@ public class User {
 	private String instansi;		// nama instansi
 	private String npwp;			// nomer npwp
 	private String ppURL;			// url profile picture
-	private String accNum;			// rekening number
 	private int userType;			// user type: 1: User biasa, 2: Kontraktor
+	private double rating;
+	private double balance;
+	private String nomorRekening;
+	
 	public String getId() {
 		return id;
 	}
@@ -64,17 +67,29 @@ public class User {
 	public void setPpURL(String ppURL) {
 		this.ppURL = ppURL;
 	}
-	public String getAccNum() {
-		return accNum;
-	}
-	public void setAccNum(String accNum) {
-		this.accNum = accNum;
-	}
 	public int getUserType() {
 		return userType;
 	}
 	public void setUserType(int userType) {
 		this.userType = userType;
+	}
+	public double getRating() {
+		return rating;
+	}
+	public void setRating(double rating) {
+		this.rating = rating;
+	}
+	public double getBalance() {
+		return balance;
+	}
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+	public String getNomorRekening() {
+		return nomorRekening;
+	}
+	public void setNomorRekening(String nomorRekening) {
+		this.nomorRekening = nomorRekening;
 	}
 	
 }

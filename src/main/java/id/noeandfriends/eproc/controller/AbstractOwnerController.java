@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import id.noeandfriends.eproc.model.Procurement;
 import id.noeandfriends.eproc.model.Proposal;
@@ -22,9 +20,7 @@ import id.noeandfriends.eproc.repository.ProcurementRepository;
 import id.noeandfriends.eproc.repository.ProposalRepository;
 import id.noeandfriends.eproc.repository.UserRepository;
 
-@RestController
-@RequestMapping("/api")
-public class AbstractOwnerController {
+public class AbstractOwnerController extends InternalAPIController {
 	
 	@Autowired
 	ProcurementRepository procurementRepository;
@@ -34,6 +30,8 @@ public class AbstractOwnerController {
 	
 	@Autowired
 	UserRepository userRepository;
+	
+	// -------------------------------------------------------------------
 	
 	@GetMapping(path="/v1/owners/procurements")
 	public ResponseEntity<List<Procurement>> getProcurements() {
@@ -119,13 +117,6 @@ public class AbstractOwnerController {
 		HttpHeaders headers = new HttpHeaders();
 		List<User> users = userRepository.findAll();
 		return new ResponseEntity<List<User>>(users, headers, HttpStatus.OK);
-	}
-
-	@GetMapping(path="/v1/owners/users/{user_id}")
-	public ResponseEntity<User> getUser(@PathVariable String user_id) {
-		HttpHeaders headers = new HttpHeaders();
-		User user = userRepository.findById(user_id).get();
-		return new ResponseEntity<User>(user, headers, HttpStatus.OK);
 	}
 	
 	@PostMapping(path="/v1/owners/users")

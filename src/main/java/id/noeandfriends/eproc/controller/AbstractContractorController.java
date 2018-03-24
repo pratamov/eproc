@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import id.noeandfriends.eproc.model.Procurement;
 import id.noeandfriends.eproc.model.Proposal;
@@ -22,9 +20,7 @@ import id.noeandfriends.eproc.repository.ProcurementRepository;
 import id.noeandfriends.eproc.repository.ProposalRepository;
 import id.noeandfriends.eproc.repository.UserRepository;
 
-@RestController
-@RequestMapping("/api")
-public class AbstractContractorController {
+public class AbstractContractorController extends InternalAPIController {
 	
 	@Autowired
 	ProcurementRepository procurementRepository;
