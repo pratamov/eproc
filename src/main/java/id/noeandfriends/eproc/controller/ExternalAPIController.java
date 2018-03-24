@@ -27,7 +27,7 @@ import id.noeandfriends.eproc.model.external.UserRegisterResponsePayload;
 import id.noeandfriends.eproc.model.external.VaCreationRequest;
 import id.noeandfriends.eproc.model.external.VaCreationResponsePayload;
 
-public class ExternalAPIController {
+public abstract class ExternalAPIController {
 	
 	public static final String APIKEY = "YB6d8eqSxLoqaG1pExGKUnjd9kzGbsC7";
 	

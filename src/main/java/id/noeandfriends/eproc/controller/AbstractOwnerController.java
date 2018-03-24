@@ -21,7 +21,7 @@ import id.noeandfriends.eproc.repository.ProcurementRepository;
 import id.noeandfriends.eproc.repository.ProposalRepository;
 import id.noeandfriends.eproc.repository.UserRepository;
 
-public class AbstractOwnerController extends InternalAPIController {
+public abstract class AbstractOwnerController extends InternalAPIController {
 	@Autowired
 	ProcurementRepository procurementRepository;
 	

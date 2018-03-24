@@ -7,7 +7,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +16,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 import id.noeandfriends.eproc.model.Account;
 import id.noeandfriends.eproc.model.AccountRequest;
-import id.noeandfriends.eproc.model.Login;
 import id.noeandfriends.eproc.model.Procurement;
 import id.noeandfriends.eproc.model.Proposal;
 import id.noeandfriends.eproc.model.User;
@@ -34,7 +32,7 @@ import id.noeandfriends.eproc.repository.ProcurementRepository;
 import id.noeandfriends.eproc.repository.ProposalRepository;
 import id.noeandfriends.eproc.repository.UserRepository;
 
-public class InternalAPIController extends ExternalAPIController{
+public abstract class InternalAPIController extends ExternalAPIController{
 	
 	@Autowired
 	ProcurementRepository procurementRepository;
