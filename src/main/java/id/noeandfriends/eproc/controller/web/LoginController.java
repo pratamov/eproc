@@ -28,14 +28,6 @@ public class LoginController extends AbstractContractorController{
 	public void index(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		
-		Login login = new Login();
-		
-		login.setEmail(email);
-		login.setPassword(password);
-		
-		User user = login(login).getBody();
-		
 		response.sendRedirect("/dashboard");
 	}
 }
