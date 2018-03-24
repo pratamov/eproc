@@ -21,7 +21,7 @@ public class ProposalController extends AbstractContractorController {
 	public String index(Model model) {
 		return "pages/tables/proposal";
 	}
-	@PostMapping("/add")
+	@RequestMapping("/add")
 	public String form_create_proposal(HttpServletRequest request, HttpServletResponse response) throws IOException {
 //		String judul = request.getParameter("proposalJudul");
 //		String deskripsi = request.getParameter("proposalDeskripsi");
@@ -30,7 +30,7 @@ public class ProposalController extends AbstractContractorController {
 //		String File = request.getParameter("proposalFile"); 
 		return "pages/tables/add_proposal";
 	}
-	@PostMapping("/edit")
+	@RequestMapping("/edit")
 	public String form_edit_proposal(HttpServletRequest request, HttpServletResponse response) throws IOException {
 //		String judul = request.getParameter("proposalJudul");
 //		String deskripsi = request.getParameter("proposalDeskripsi");
