@@ -18,7 +18,7 @@ public class GuestController {
 	
 	@GetMapping(path="/")
 	public void index(HttpServletRequest request, HttpServletResponse response) throws IOException{
-		response.sendRedirect("/swagger-ui.html");
+		response.sendRedirect("/login");
 	}
 	
 }
