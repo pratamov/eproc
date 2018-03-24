@@ -12,6 +12,8 @@ import id.noeandfriends.eproc.model.external.AccountCreationResponsePayload;
 import id.noeandfriends.eproc.model.external.AccountStatementRequest;
 import id.noeandfriends.eproc.model.external.AccountStatementResponsePayload;
 import id.noeandfriends.eproc.model.external.ApiResponse;
+import id.noeandfriends.eproc.model.external.AtmLocationRequest;
+import id.noeandfriends.eproc.model.external.AtmLocationResponsePayload;
 import id.noeandfriends.eproc.model.external.BalanceInformationRequest;
 import id.noeandfriends.eproc.model.external.BalanceInformationResponsePayload;
 import id.noeandfriends.eproc.model.external.InhouseTransferRequest;
@@ -142,6 +144,26 @@ public class ExternalAPIController {
 				restTemplate.exchange(
 						endpoint , HttpMethod.POST, httpEntity, 
 						new ParameterizedTypeReference<ApiResponse<VaCreationResponsePayload>>() {}).getBody();
+		
+		return response;
+		
+	}
+	
+	public ApiResponse<AtmLocationResponsePayload> atmLocation(AtmLocationRequest request){
+		
+		String endpoint = endpoint("atm-location");
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		headers.add("apikey", APIKEY);
+		
+		HttpEntity<AtmLocationRequest> httpEntity = new HttpEntity<>(request, headers);
+		
+		RestTemplate restTemplate = new RestTemplate();
+		ApiResponse<AtmLocationResponsePayload> response = 
+				restTemplate.exchange(
+						endpoint , HttpMethod.POST, httpEntity, 
+						new ParameterizedTypeReference<ApiResponse<AtmLocationResponsePayload>>() {}).getBody();
 		
 		return response;
 		

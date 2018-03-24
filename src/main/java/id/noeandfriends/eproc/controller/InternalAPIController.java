@@ -21,6 +21,8 @@ import id.noeandfriends.eproc.model.User;
 import id.noeandfriends.eproc.model.external.AccountCreationRequest;
 import id.noeandfriends.eproc.model.external.AccountCreationResponsePayload;
 import id.noeandfriends.eproc.model.external.ApiResponse;
+import id.noeandfriends.eproc.model.external.AtmLocation;
+import id.noeandfriends.eproc.model.external.AtmLocationRequest;
 import id.noeandfriends.eproc.model.external.BalanceInformationRequest;
 import id.noeandfriends.eproc.model.external.BalanceInformationResponsePayload;
 import id.noeandfriends.eproc.model.external.UserRegisterRequest;
@@ -166,6 +168,13 @@ public class InternalAPIController extends ExternalAPIController{
 		
 		return new ResponseEntity<Account>(account, headers, HttpStatus.OK);
 		
+	}
+	
+	@GetMapping(path="/v2/atm")
+	public ResponseEntity<List<AtmLocation>> getAtmLocation(@RequestBody AtmLocationRequest request) {
+		HttpHeaders headers = new HttpHeaders();
+		List<AtmLocation> locations = this.atmLocation(request).getPayload().getData();
+		return new ResponseEntity<List<AtmLocation>>(locations, headers, HttpStatus.OK);
 	}
 	
 	
