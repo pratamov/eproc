@@ -18,7 +18,7 @@ import id.noeandfriends.eproc.model.User;
 
 @Controller
 @RequestMapping("/register")
-public class RegisterController {
+public class RegisterController extends AbstractContractorController{
 	@RequestMapping("")
 	public String index(Model model) {
 		return "/pages/examples/register";
