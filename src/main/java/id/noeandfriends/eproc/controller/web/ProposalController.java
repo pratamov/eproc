@@ -23,20 +23,20 @@ public class ProposalController extends AbstractContractorController {
 	}
 	@PostMapping("/add")
 	public String form_create_proposal(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String judul = request.getParameter("proposalJudul");
-		String deskripsi = request.getParameter("proposalDeskripsi");
-		String biaya = request.getParameter("proposalBiaya");
-		String durasi = request.getParameter("proposalDurasi");
-		String File = request.getParameter("proposalFile"); 
+//		String judul = request.getParameter("proposalJudul");
+//		String deskripsi = request.getParameter("proposalDeskripsi");
+//		String biaya = request.getParameter("proposalBiaya");
+//		String durasi = request.getParameter("proposalDurasi");
+//		String File = request.getParameter("proposalFile"); 
 		return "pages/tables/add_proposal";
 	}
 	@PostMapping("/edit")
 	public String form_edit_proposal(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String judul = request.getParameter("proposalJudul");
-		String deskripsi = request.getParameter("proposalDeskripsi");
-		String biaya = request.getParameter("proposalBiaya");
-		String durasi = request.getParameter("proposalDurasi");
-		String File = request.getParameter("proposalFile"); 
+//		String judul = request.getParameter("proposalJudul");
+//		String deskripsi = request.getParameter("proposalDeskripsi");
+//		String biaya = request.getParameter("proposalBiaya");
+//		String durasi = request.getParameter("proposalDurasi");
+//		String File = request.getParameter("proposalFile"); 
 		return "pages/tables/edit_proposal";
 	}
 }
