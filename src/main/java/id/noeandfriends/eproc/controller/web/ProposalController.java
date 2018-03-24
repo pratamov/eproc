@@ -15,4 +15,8 @@ public class ProposalController {
 	public String form_create_proposal(Model model) {
 		return "pages/tables/add_proposal";
 	}
+	@RequestMapping("/edit")
+	public String form_edit_proposal(Model model) {
+		return "pages/tables/edit_proposal";
+	}
 }
