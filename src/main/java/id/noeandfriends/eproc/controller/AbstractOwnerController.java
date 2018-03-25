@@ -58,7 +58,9 @@ public abstract class AbstractOwnerController extends InternalAPIController {
 		List<Proposal> proposals = new ArrayList<>();
 		
 		for (Procurement procurement : procurementRepository.findByUser(user)) {
+			System.out.println(procurement.getId());
 			for (Proposal proposal : proposalRepository.findByProcurement(procurement)) {
+				System.out.println(proposal.getId());
 				proposals.add(proposal);
 			}
 		}
