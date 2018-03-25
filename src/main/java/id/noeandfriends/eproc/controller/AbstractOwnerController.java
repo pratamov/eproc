@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import id.noeandfriends.eproc.model.Login;
 import id.noeandfriends.eproc.model.Procurement;
 import id.noeandfriends.eproc.model.Proposal;
@@ -51,8 +54,9 @@ public abstract class AbstractOwnerController extends InternalAPIController {
 	}
 	
 	@GetMapping(path="/v2/users/{user_id}/proposals")
-	public ResponseEntity<List<Proposal>> getListOfMyProposals(@PathVariable String user_id) {
+	public ResponseEntity<List<Proposal>> getListOfMyProposals(@PathVariable String user_id) throws JsonProcessingException {
 		HttpHeaders headers = new HttpHeaders();
+		ObjectMapper mapper = new ObjectMapper();
 		
 		User user = userRepository.findById(user_id).get();
 		List<Proposal> proposals = new ArrayList<>();
@@ -60,6 +64,7 @@ public abstract class AbstractOwnerController extends InternalAPIController {
 		for (Procurement procurement : procurementRepository.findByUser(user)) {
 			System.out.println(procurement.getId());
 			for (Proposal proposal : proposalRepository.findAll()) {
+				System.out.println(mapper.writeValueAsString(proposal));
 				if (proposal.getProcurement().getId().equals(procurement.getId())) {
 					System.out.println(proposal.getId());
 					proposals.add(proposal);
