@@ -59,9 +59,11 @@ public abstract class AbstractOwnerController extends InternalAPIController {
 		
 		for (Procurement procurement : procurementRepository.findByUser(user)) {
 			System.out.println(procurement.getId());
-			for (Proposal proposal : proposalRepository.findByProcurement(procurement)) {
-				System.out.println(proposal.getId());
-				proposals.add(proposal);
+			for (Proposal proposal : proposalRepository.findAll()) {
+				if (proposal.getProcurement().getId().equals(procurement.getId())) {
+					System.out.println(proposal.getId());
+					proposals.add(proposal);
+				}
 			}
 		}
 		
