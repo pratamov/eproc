@@ -58,8 +58,9 @@ public abstract class AbstractOwnerController extends InternalAPIController {
 		List<Proposal> proposals = new ArrayList<>();
 		
 		for (Procurement procurement : procurementRepository.findByUser(user)) {
-			List<Proposal> props = proposalRepository.findByProcurement(procurement);
-			proposals.addAll(props);
+			for (Proposal proposal : proposalRepository.findByProcurement(procurement)) {
+				proposals.add(proposal);
+			}
 		}
 		
 		return new ResponseEntity<List<Proposal>>(proposals, headers, HttpStatus.OK);
