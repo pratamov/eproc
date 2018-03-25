@@ -83,11 +83,13 @@ public abstract class InternalAPIController extends ExternalAPIController{
 	}
 	
 	@PostMapping(path="/v2/users/{user_id}/procurements/{procurement_id}/proposals")
-	public ResponseEntity<Proposal> createProposals(@PathVariable String user_id, @RequestBody Proposal proposal) {
+	public ResponseEntity<Proposal> createProposals(@PathVariable String user_id, @PathVariable String procurement_id, @RequestBody Proposal proposal) {
 		HttpHeaders headers = new HttpHeaders();
 		User user = userRepository.findById(user_id).get();
 		proposal.setContractor(user);
 		proposal = proposalRepository.save(proposal);
+		Procurement procurement = procurementRepository.findById(procurement_id).get();
+		proposal.setProcurement(procurement);
 		return new ResponseEntity<Proposal>(proposal, headers, HttpStatus.OK);
 	}
 	
