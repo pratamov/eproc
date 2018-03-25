@@ -1,6 +1,7 @@
 package id.noeandfriends.eproc.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "proposals")
@@ -9,6 +10,7 @@ public class Proposal {
 	private String id;
 	private String title;
 	private String description;
+	@DBRef
 	private Procurement procurement;	// corresponds to which procurement
 	private User contractor;				// creator of this proposal
 	private String proposalURL;			// url dokumen proposal

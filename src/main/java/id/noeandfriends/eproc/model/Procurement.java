@@ -13,6 +13,7 @@ public class Procurement {
 	private String title;		// judul
 	private String description;	// deskripsi singkat
 	private String alamat;		// alamat
+	@DBRef
 	private User user;			// orang yang buat 
 	private String created;		// tanggal dibuat
 	private String dueDate;		// tanggal deadline
