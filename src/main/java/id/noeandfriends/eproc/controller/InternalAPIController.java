@@ -87,9 +87,9 @@ public abstract class InternalAPIController extends ExternalAPIController{
 		HttpHeaders headers = new HttpHeaders();
 		User user = userRepository.findById(user_id).get();
 		proposal.setContractor(user);
-		proposal = proposalRepository.save(proposal);
 		Procurement procurement = procurementRepository.findById(procurement_id).get();
 		proposal.setProcurement(procurement);
+		proposal = proposalRepository.save(proposal);
 		return new ResponseEntity<Proposal>(proposal, headers, HttpStatus.OK);
 	}
 	
