@@ -14,8 +14,8 @@ public class Procurement {
 	private String description;	// deskripsi singkat
 	private String alamat;		// alamat
 	private User user;			// orang yang buat 
-	private Date created;		// tanggal dibuat
-	private Date dueDate;		// tanggal deadline
+	private String created;		// tanggal dibuat
+	private String dueDate;		// tanggal deadline
 	private String layoutURL;	// url layout rumah
 	private String filePendukungURL;		// url file pendukung
 	private String lainlain;		// Notes dari user
@@ -45,18 +45,6 @@ public class Procurement {
 	}
 	public void setAlamat(String alamat) {
 		this.alamat = alamat;
-	}
-	public Date getCreated() {
-		return created;
-	}
-	public void setCreated(Date created) {
-		this.created = created;
-	}
-	public Date getDueDate() {
-		return dueDate;
-	}
-	public void setDueDate(Date dueDate) {
-		this.dueDate = dueDate;
 	}
 	public String getLayoutURL() {
 		return layoutURL;
@@ -93,6 +81,18 @@ public class Procurement {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public String getCreated() {
+		return created;
+	}
+	public void setCreated(String created) {
+		this.created = created;
+	}
+	public String getDueDate() {
+		return dueDate;
+	}
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
 	}
 	
 }
